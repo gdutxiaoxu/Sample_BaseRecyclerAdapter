@@ -1,0 +1,36 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <Button
+        android:id="@+id/recycler_view_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="recycler_view"
+        android:onClick="onButtonClick"/>
+
+    <Button
+        android:id="@+id/multirecycler_view_acyivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="multirecycler_view_acyivity"
+        android:onClick="onButtonClick"/>
+
+    <Button
+        android:id="@+id/header_recycler_view_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="header_recycler_view_activity"
+        android:onClick="onButtonClick"/>
+    <Button
+        android:id="@+id/coffce_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="咖啡店测试例子"
+        android:onClick="onButtonClick"/>
+
+
+
+</LinearLayout>

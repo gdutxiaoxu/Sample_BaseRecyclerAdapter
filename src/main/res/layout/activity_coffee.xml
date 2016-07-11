@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/simple_coffee"
+        android:background="@android:color/holo_blue_dark"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+       />
+
+    <TextView
+        android:id="@+id/coffee"
+        android:background="@android:color/holo_blue_dark"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        />
+
+    <Button
+        android:id="@+id/btn_addSugar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onButtonClick"
+        android:text="addSugar"/>
+    <Button
+        android:id="@+id/btn_addMilk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onButtonClick"
+        android:text="addMilk"/>
+    <Button
+        android:id="@+id/btn_addMIlkFoam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onButtonClick"
+        android:text="addMilkFoam"/>
+    <Button
+        android:id="@+id/btn_addMocha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onButtonClick"
+        android:text="addMocha"/>
+
+
+</LinearLayout>
