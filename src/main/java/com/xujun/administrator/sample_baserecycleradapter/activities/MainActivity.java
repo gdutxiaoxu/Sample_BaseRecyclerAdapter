@@ -28,8 +28,15 @@ public class MainActivity extends AppCompatActivity {
             case  R.id.header_recycler_view_activity:
                 jumpTo(HeaderRecyclerActivity.class);
                 break;
+
             case  R.id.coffce_test:
                 jumpTo(CoffeeActivity.class);
+                break;
+            case  R.id.home_recyclerView:
+                jumpTo(HomeActivity.class);
+                break;
+            case  R.id.stagered_recyclerView:
+                jumpTo(StaggeredGridLayoutActivity.class);
                 break;
         }
     }

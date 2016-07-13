@@ -8,27 +8,41 @@
         android:id="@+id/recycler_view_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="recycler_view"
+        android:text="简单RecyclerView"
         android:onClick="onButtonClick"/>
 
     <Button
         android:id="@+id/multirecycler_view_acyivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="multirecycler_view_acyivity"
+        android:text="多种类型的"
         android:onClick="onButtonClick"/>
 
     <Button
         android:id="@+id/header_recycler_view_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="header_recycler_view_activity"
+        android:text="带Header的"
         android:onClick="onButtonClick"/>
     <Button
         android:id="@+id/coffce_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="咖啡店测试例子"
+        android:onClick="onButtonClick"/>
+
+    <Button
+        android:id="@+id/home_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="网格布局RecyclerView"
+        android:onClick="onButtonClick"/>
+
+    <Button
+        android:id="@+id/stagered_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="瀑布流RecyclerView"
         android:onClick="onButtonClick"/>
 
 

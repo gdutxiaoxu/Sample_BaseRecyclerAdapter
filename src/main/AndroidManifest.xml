@@ -23,6 +23,9 @@
         </activity>
         <activity android:name=".activities.CoffeeActivity">
         </activity>
+        <activity android:name=".activities.StaggeredGridLayoutActivity"></activity>
+        <activity android:name=".activities.HomeActivity"></activity>
+
     </application>
 
 </manifest>
