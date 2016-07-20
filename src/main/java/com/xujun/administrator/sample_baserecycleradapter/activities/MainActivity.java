@@ -38,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
             case  R.id.stagered_recyclerView:
                 jumpTo(StaggeredGridLayoutActivity.class);
                 break;
+            case  R.id.header_and_footer_recyclerView:
+                jumpTo(HeaderAndFooterView.class);
+                break;
         }
     }
 
