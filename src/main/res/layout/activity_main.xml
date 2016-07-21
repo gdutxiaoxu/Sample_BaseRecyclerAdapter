@@ -52,6 +52,13 @@
         android:text="展示header和footer"
         android:onClick="onButtonClick"/>
 
+    <Button
+        android:id="@+id/header_and_footer_recyclerView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="展示header和footer2"
+        android:onClick="onButtonClick"/>
+
 
 
 </LinearLayout>

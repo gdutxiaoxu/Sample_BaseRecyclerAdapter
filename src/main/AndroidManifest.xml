@@ -27,6 +27,8 @@
         <activity android:name=".activities.HomeActivity"/>
         <activity android:name=".activities.HeaderAndFooterView">
         </activity>
+        <activity android:name=".activities.HeaderAndFooterView2Activity">
+        </activity>
     </application>
 
 </manifest>

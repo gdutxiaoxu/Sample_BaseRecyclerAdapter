@@ -41,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
             case  R.id.header_and_footer_recyclerView:
                 jumpTo(HeaderAndFooterView.class);
                 break;
+
+            case  R.id.header_and_footer_recyclerView2:
+                jumpTo(HeaderAndFooterView2Activity.class);
+                break;
         }
     }
 

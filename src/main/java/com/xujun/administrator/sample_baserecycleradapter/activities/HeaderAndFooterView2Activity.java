@@ -13,15 +13,15 @@ import android.widget.TextView;
 
 import com.xujun.administrator.sample_baserecycleradapter.R;
 import com.xujun.administrator.sample_baserecycleradapter.adapters.SinglePersonAdapter;
-import com.xujun.administrator.sample_baserecycleradapter.base.FooterWrapper;
-import com.xujun.administrator.sample_baserecycleradapter.base.HeaderWrapper;
+import com.xujun.administrator.sample_baserecycleradapter.base.HeaderAndFooterWrapper2;
 import com.xujun.administrator.sample_baserecycleradapter.beans.ChatMessage;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HeaderAndFooterView extends AppCompatActivity {
-    private HeaderWrapper mHeaderWrapper;
+public class HeaderAndFooterView2Activity extends AppCompatActivity {
+
+
     private RecyclerView mRecyclerView;
     List<ChatMessage> mDatas = new ArrayList<>();
     private SinglePersonAdapter mAdapter;
@@ -32,28 +32,29 @@ public class HeaderAndFooterView extends AppCompatActivity {
         }
     };
 
-     public static final String TAG="tag";
-    private FooterWrapper<Object> mFooterWrapper;
+    public static final String TAG="tag";
+    private HeaderAndFooterWrapper2 mHeaderAndFooterWrapper2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_header_recycler);
+        setContentView(R.layout.activity_header_and_footer_view2);
 
         mDatas.addAll(ChatMessage.MOCK_DATAS);
         Log.i(TAG, "HeaderAndFooterView.class:onCreate(): 42:ChatMessage.MOCK_DATAS.size()=" +ChatMessage.MOCK_DATAS.size());
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new SinglePersonAdapter(this, mDatas, R.layout.main_chat_from_msg);
-        mHeaderWrapper = new HeaderWrapper(mAdapter);
+        mHeaderAndFooterWrapper2 = new HeaderAndFooterWrapper2(mAdapter);
 
-        TextView textView = new TextView(this);
+        TextView headerView = new TextView(this);
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams
                 .MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        textView.setLayoutParams(layoutParams);
-        textView.setText("我是HeaderView");
-        textView.setBackgroundColor(Color.GRAY);
-        mHeaderWrapper.addHeaderView(textView);
+        headerView.setLayoutParams(layoutParams);
+        headerView.setText("我是HeaderView");
+        headerView.setBackgroundColor(Color.GRAY);
+
+        mHeaderAndFooterWrapper2.addHeaderView(headerView);
 
         TextView foot = new TextView(this);
 
@@ -61,13 +62,20 @@ public class HeaderAndFooterView extends AppCompatActivity {
         foot.setText("foot");
         foot.setBackgroundColor(Color.GRAY);
         foot.setPadding(10,10,10,10);
-        mFooterWrapper = new FooterWrapper<>(mHeaderWrapper);
-        mFooterWrapper.addFootView(foot);
+        mHeaderAndFooterWrapper2.addFootView(foot);
+        mRecyclerView.setAdapter(mHeaderAndFooterWrapper2);
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mHeaderAndFooterWrapper2.showHeader(false);
+            }
+        },4000);
 
-        mRecyclerView.setAdapter(mFooterWrapper);
-
-
-
-
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mHeaderAndFooterWrapper2.showFooter(false);
+            }
+        },8000);
     }
 }
