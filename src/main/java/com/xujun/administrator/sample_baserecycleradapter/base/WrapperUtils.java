@@ -1,6 +1,7 @@
 package com.xujun.administrator.sample_baserecycleradapter.base;
 
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.ViewGroup;
@@ -31,6 +32,8 @@ public class WrapperUtils {
                 }
             });
             gridLayoutManager.setSpanCount(gridLayoutManager.getSpanCount());
+        }else if(layoutManager instanceof LinearLayoutManager){
+
         }
     }
 
@@ -45,5 +48,8 @@ public class WrapperUtils {
 
             p.setFullSpan(true);
         }
+
+
+
     }
 }

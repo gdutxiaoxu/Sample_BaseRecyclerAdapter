@@ -3,6 +3,7 @@ package com.xujun.administrator.sample_baserecycleradapter.base;
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -77,20 +78,28 @@ public class FooterWrapper<T> extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-        WrapperUtils.onAttachedToRecyclerView(mInnerAdapter, recyclerView, new WrapperUtils
-                .SpanSizeCallback() {
-            @Override
-            public int getSpanSize(GridLayoutManager layoutManager, GridLayoutManager
-                    .SpanSizeLookup oldLookup, int position) {
-                int viewType = getItemViewType(position);
-                if (mFooterViews.get(viewType) != null) {
-                    return layoutManager.getSpanCount();
+        mInnerAdapter.onAttachedToRecyclerView(recyclerView);
+
+        RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+        if (layoutManager instanceof GridLayoutManager) {
+            final GridLayoutManager gridLayoutManager = (GridLayoutManager) layoutManager;
+            final GridLayoutManager.SpanSizeLookup spanSizeLookup = gridLayoutManager
+                    .getSpanSizeLookup();
+
+            gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    int viewType = getItemViewType(position);
+                    if (mFooterViews.get(viewType) != null) {
+                        return gridLayoutManager.getSpanCount();
+                    }
+                    if (spanSizeLookup != null)
+                        return spanSizeLookup.getSpanSize(position);
+                    return 1;
                 }
-                if (oldLookup != null)
-                    return oldLookup.getSpanSize(position);
-                return 1;
-            }
-        });
+            });
+            gridLayoutManager.setSpanCount(gridLayoutManager.getSpanCount());
+        }
     }
 
     @Override
@@ -98,7 +107,15 @@ public class FooterWrapper<T> extends RecyclerView.Adapter<RecyclerView.ViewHold
         mInnerAdapter.onViewAttachedToWindow(holder);
         int position = holder.getLayoutPosition();
         if (isFooterPos(position)) {
-            WrapperUtils.setFullSpan(holder);
+            ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();
+
+            if (lp != null && lp instanceof StaggeredGridLayoutManager.LayoutParams) {
+
+                StaggeredGridLayoutManager.LayoutParams p =
+                        (StaggeredGridLayoutManager.LayoutParams) lp;
+
+                p.setFullSpan(true);
+            }
         }
     }
 
@@ -116,13 +133,13 @@ public class FooterWrapper<T> extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     public void showFooter(boolean isShowFooter) {
-        mIsShowFooter = isShowFooter;
-//        notifyDataSetChanged();
-       if(isShowFooter){
-           notifyItemRangeInserted(getRealItemCount(),getFootViewCounts());
-       }else{
-           notifyItemRangeRemoved(getRealItemCount(),getFootViewCounts());
-       }
+//        mIsShowFooter = isShowFooter;
+//        //        notifyDataSetChanged();
+        if (isShowFooter) {
+            notifyItemRangeInserted(getRealItemCount(), getFootViewCounts());
+        } else {
+            notifyItemRangeRemoved(getRealItemCount(), getFootViewCounts());
+        }
     }
 
     public RecyclerView.Adapter getInnerAdapter() {

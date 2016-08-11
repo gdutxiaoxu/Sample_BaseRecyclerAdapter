@@ -3,9 +3,11 @@ package com.xujun.administrator.sample_baserecycleradapter.base;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 博客地址：http://blog.csdn.net/gdutxiaoxu
@@ -13,19 +15,19 @@ import android.view.ViewGroup;
  * @author xujun
  * @time 2016/7/7 17:29.
  */
-public class HeaderAndFooterWrapper2<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class HeaderAndFooterWrapper3<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int BASE_ITEM_TYPE_HEADER = 100000;
     private static final int BASE_ITEM_TYPE_FOOTER = 200000;
     private boolean mIsShowHeader = true;
     private boolean mIsShowFooter = true;
     public static final String TAG = "tag";
 
-    private SparseArray<View> mHeaderViews = new SparseArray<>();
-    private SparseArray<View> mFootViews = new SparseArray<>();
+    private Map<Integer,View> mHeaderViews = new HashMap<>();
+    private Map<Integer,View> mFootViews = new HashMap<>();
 
     private RecyclerView.Adapter mInnerAdapter;
 
-    public HeaderAndFooterWrapper2(RecyclerView.Adapter adapter) {
+    public HeaderAndFooterWrapper3(RecyclerView.Adapter adapter) {
         mInnerAdapter = adapter;
     }
 
@@ -42,9 +44,9 @@ public class HeaderAndFooterWrapper2<T> extends RecyclerView.Adapter<RecyclerVie
     @Override
     public int getItemViewType(int position) {
         if (isHeaderViewPos(position)) {
-            return mHeaderViews.keyAt(position);
+            return position+BASE_ITEM_TYPE_HEADER;
         } else if (isFooterViewPos(position)) {
-            return mFootViews.keyAt(position - getRealItemCount() - getHeadersCount());
+            return position+BASE_ITEM_TYPE_FOOTER;
         }
         return mInnerAdapter.getItemViewType(position - getHeadersCount());
     }
@@ -126,11 +128,11 @@ public class HeaderAndFooterWrapper2<T> extends RecyclerView.Adapter<RecyclerVie
     }
 
     public void addHeaderView(View view) {
-        mHeaderViews.put(getRealHeaderViewCounts() + BASE_ITEM_TYPE_HEADER, view);
+        mHeaderViews.put(getRealHeaderViewCounts()+BASE_ITEM_TYPE_HEADER,view);
     }
 
     public void addFootView(View view) {
-        mFootViews.put(getRealFooterViewCounts() + BASE_ITEM_TYPE_FOOTER, view);
+        mFootViews.put(getRealFooterViewCounts()+BASE_ITEM_TYPE_FOOTER+getRealItemCount()+getHeadersCount(),view);
     }
 
     public int getHeadersCount() {

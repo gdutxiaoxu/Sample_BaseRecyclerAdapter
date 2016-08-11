@@ -29,6 +29,8 @@
         </activity>
         <activity android:name=".activities.HeaderAndFooterView2Activity">
         </activity>
+        <activity android:name=".activities.LoadMoreWraperActivity">
+        </activity>
     </application>
 
 </manifest>

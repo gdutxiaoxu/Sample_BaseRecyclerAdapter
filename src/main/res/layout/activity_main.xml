@@ -59,6 +59,13 @@
         android:text="展示header和footer2"
         android:onClick="onButtonClick"/>
 
+    <Button
+        android:id="@+id/footer_wraper_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="展示footerWraperActivity"
+        android:onClick="onButtonClick"/>
+
 
 
 </LinearLayout>

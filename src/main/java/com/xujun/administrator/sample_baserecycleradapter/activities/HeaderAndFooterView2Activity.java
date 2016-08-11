@@ -8,12 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.xujun.administrator.sample_baserecycleradapter.R;
 import com.xujun.administrator.sample_baserecycleradapter.adapters.SinglePersonAdapter;
-import com.xujun.administrator.sample_baserecycleradapter.base.HeaderAndFooterWrapper2;
+import com.xujun.administrator.sample_baserecycleradapter.base.HeaderAndFooterWrapper3;
 import com.xujun.administrator.sample_baserecycleradapter.beans.ChatMessage;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class HeaderAndFooterView2Activity extends AppCompatActivity {
     };
 
     public static final String TAG="tag";
-    private HeaderAndFooterWrapper2 mHeaderAndFooterWrapper2;
+    private HeaderAndFooterWrapper3 mHeaderAndFooterWrapper3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class HeaderAndFooterView2Activity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new SinglePersonAdapter(this, mDatas, R.layout.main_chat_from_msg);
-        mHeaderAndFooterWrapper2 = new HeaderAndFooterWrapper2(mAdapter);
+        mHeaderAndFooterWrapper3 = new HeaderAndFooterWrapper3(mAdapter);
 
         TextView headerView = new TextView(this);
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams
@@ -54,7 +55,9 @@ public class HeaderAndFooterView2Activity extends AppCompatActivity {
         headerView.setText("我是HeaderView");
         headerView.setBackgroundColor(Color.GRAY);
 
-        mHeaderAndFooterWrapper2.addHeaderView(headerView);
+
+
+        mHeaderAndFooterWrapper3.addHeaderView(headerView);
 
         TextView foot = new TextView(this);
 
@@ -62,9 +65,15 @@ public class HeaderAndFooterView2Activity extends AppCompatActivity {
         foot.setText("foot");
         foot.setBackgroundColor(Color.GRAY);
         foot.setPadding(10,10,10,10);
-        mHeaderAndFooterWrapper2.addFootView(foot);
-        mRecyclerView.setAdapter(mHeaderAndFooterWrapper2);
-        mHandler.postDelayed(new Runnable() {
+
+
+
+        mHeaderAndFooterWrapper3.addFootView(foot);
+
+        View view = View.inflate(this, R.layout.item_load_more, null);
+        mHeaderAndFooterWrapper3.addFootView(view);
+        mRecyclerView.setAdapter(mHeaderAndFooterWrapper3);
+       /* mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 mHeaderAndFooterWrapper2.showHeader(false);
@@ -76,6 +85,6 @@ public class HeaderAndFooterView2Activity extends AppCompatActivity {
             public void run() {
                 mHeaderAndFooterWrapper2.showFooter(false);
             }
-        },8000);
+        },8000);*/
     }
 }
